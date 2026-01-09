@@ -42,13 +42,13 @@ const PlanPage: React.FC = () => {
     monthly: {
       name: isEnglish ? "Monthly Plan" : "Plano Mensal",
       originalPrice: isEnglish ? 39.99 : 389.0,
-      discountPrice: isEnglish ? 19.99 : 111.5,
-      discountLabel: "71% OFF"
+      discountPrice: isEnglish ? 19.99 : 107.9,
+      discountLabel: "72% OFF"
     },
     annual: {
       name: isEnglish ? "Annual Plan" : "Plano Anual",
       originalPrice: isEnglish ? 299.99 : 3267.6,
-      discountPrice: isEnglish ? 49.99 : 218.3,
+      discountPrice: isEnglish ? 39.99 : 214.9,
       discountLabel: "93% OFF"
     }
   };
