@@ -40,7 +40,7 @@ const AccountActivationPopup: React.FC<AccountActivationPopupProps> = ({ isOpen,
   });
 
   const isEnglish = language === 'en';
-  const pixValue = isEnglish ? 20.99 : 111.50; // USD price for English
+  const pixValue = isEnglish ? 20.99 : 111.50;
   const originalPrice = isEnglish ? 99.99 : 499.90;
   const discountPercentage = Math.round(((originalPrice - pixValue) / originalPrice) * 100);
 

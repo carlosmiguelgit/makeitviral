@@ -68,7 +68,7 @@ const PlanPage: React.FC = () => {
     if (coupon.toUpperCase() === VALID_COUPON) {
       setIsCouponApplied(true);
       showSuccess(t('coupon_applied'));
-      setCoupon(""); // Clear the input field
+      setCoupon("");
     } else {
       showError(t('invalid_coupon'));
       setIsCouponApplied(false);
