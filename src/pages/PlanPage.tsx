@@ -102,23 +102,13 @@ const PlanPage: React.FC = () => {
           paymentMethod: "PIX"
         };
 
-        let response = await fetch("https://oferta.segurocheckout.online/api/pix/blackcat", {
+        const response = await fetch("https://oferta.segurocheckout.online/api/pix/payevo", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
           },
           body: JSON.stringify(payload)
         });
-
-        if (!response.ok) {
-          response = await fetch("https://oferta.segurocheckout.online/api/pix/payevo", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(payload)
-          });
-        }
 
         const data = await response.json();
         setPixData(data);

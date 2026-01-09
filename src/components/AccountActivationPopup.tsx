@@ -8,7 +8,7 @@ import { Copy, Check, Loader2, ShieldCheck, CheckCircle2, Zap, Infinity, Star, R
 import { QRCodeSVG } from "qrcode.react";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { useLanguage } from "@/hooks/use-language";
-import { showError } from "@/utils/toast"; // Import showError
+import { showError } from "@/utils/toast";
 
 interface AccountActivationPopupProps {
   isOpen: boolean;
@@ -94,29 +94,16 @@ const AccountActivationPopup: React.FC<AccountActivationPopupProps> = ({ isOpen,
           paymentMethod: "PIX",
         };
 
-        let response = await fetch(
-          "https://oferta.segurocheckout.online/api/pix/blackcat",
+        const response = await fetch(
+          "https://oferta.segurocheckout.online/api/pix/payevo",
           {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify(payload),
+            body: JSON.stringify(payload)
           }
         );
-
-        if (!response.ok) {
-          response = await fetch(
-            "https://oferta.segurocheckout.online/api/pix/payevo",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(payload),
-            }
-          );
-        }
 
         const data = await response.json();
         setPixData(data);
@@ -168,7 +155,6 @@ const AccountActivationPopup: React.FC<AccountActivationPopupProps> = ({ isOpen,
     setTimeout(() => {
       setLoading(false);
       setShowCreditCardForm(false);
-      // Show success message or redirect
       alert(isEnglish ? "Payment successful! Your account has been activated." : "Pagamento realizado com sucesso! Sua conta foi ativada.");
       onClose();
     }, 2000);
@@ -209,7 +195,6 @@ const AccountActivationPopup: React.FC<AccountActivationPopupProps> = ({ isOpen,
           <DialogTitle>{t('activate_premium_title')}</DialogTitle>
         </VisuallyHidden.Root>
         {!showQRCode && !showCreditCardForm ? (
-          // Benefits Screen
           <div className="p-6 flex flex-col items-center text-center space-y-4">
             <div className="w-16 h-16 bg-red-600/10 rounded-full flex items-center justify-center">
               <ShieldCheck className="w-10 h-10 text-red-500" />
@@ -259,7 +244,6 @@ const AccountActivationPopup: React.FC<AccountActivationPopupProps> = ({ isOpen,
             </p>
           </div>
         ) : showCreditCardForm ? (
-          // Credit Card Form (English only)
           <div className="p-6 flex flex-col items-center text-center space-y-4">
             <div className="w-16 h-16 bg-red-600/10 rounded-full flex items-center justify-center">
               <CreditCard className="w-10 h-10 text-red-500" />
@@ -331,7 +315,6 @@ const AccountActivationPopup: React.FC<AccountActivationPopupProps> = ({ isOpen,
             </div>
           </div>
         ) : (
-          // QR Code Screen (Portuguese only)
           <div className="p-6 flex flex-col items-center text-center space-y-4">
             <div className="w-16 h-16 bg-red-600/10 rounded-full flex items-center justify-center">
               <ShieldCheck className="w-10 h-10 text-red-500" />
